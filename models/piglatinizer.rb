@@ -1,7 +1,7 @@
 class PigLatinizer < class App
 
   def piglatinize_s(string)
-    string.split.map {|word| piglatinize_w(word).join}
+    string.split.map {|word| piglatinize_w(word)}.join
   end
 
   def piglatinize_w(word)
@@ -10,7 +10,7 @@ class PigLatinizer < class App
     else
       first_consonants = word.split(/[aeiou].*/).join.chars
       rest_of_word = word.chars - first_consonants
-      piglat = rest_of_word + first_consonants + "ay"
+      piglat = rest_of_word.join + first_consonants.join + "ay"
     end
   end
 
