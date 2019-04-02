@@ -1,16 +1,28 @@
-class PigLatinizer < class App
+class PigLatinizer
+
+  def initialize
+  end
+
+  def piglatinize(input)
+    if input.split.count == 1
+      piglatinize_w(input)
+    else
+      piglatinize_s(input)
+    end
+  end
 
   def piglatinize_s(string)
-    string.split.map {|word| piglatinize_w(word)}.join
+    string.split.map {|word| piglatinize_w(word)}.join(" ")
   end
 
   def piglatinize_w(word)
-    if %w[a,e,i,o,u].include? word[0]
-      piglat = word + "ay"
+    if ["a","e","i","o","u"].include? word[0].downcase
+      word + "way"
     else
       first_consonants = word.split(/[aeiou].*/).join.chars
-      rest_of_word = word.chars - first_consonants
-      piglat = rest_of_word.join + first_consonants.join + "ay"
+      i = first_consonants.count
+      rest_of_word = word[i..-1]
+      rest_of_word + first_consonants.join + "ay"
     end
   end
 
