@@ -7,8 +7,8 @@ class App < Sinatra::Base
   end
 
   post 'user_input' do
-    @params = params
-    erb :pigged
+    @pigged = PigLatinizer.new(params[:user_input])
+    erb :results
   end
-  
+
 end
