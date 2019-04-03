@@ -20,7 +20,6 @@ class PigLatinizer
  end
 
  def to_piglatin(sentence)
-   binding.pry
    sentence.split.map {|word| piglatinize(word)}.join(' ')
  end
 end
